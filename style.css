@@ -1,0 +1,517 @@
+/* Púrpura digital: #8A2BE2
+Grises y plateados: #333333, #666666, #999999, #CCCCCC  
+font-family: 'Bebas Neue', sans-serif;
+font-family: 'Borel', cursive;
+font-family: 'Special Elite', cursive;
+font-family: 'Titillium Web', sans-serif; */
+
+
+* {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+/* NAV */
+
+body {
+    background-color: black;
+}
+
+header {
+    background: linear-gradient(to left, #8360c3, #2ebf91);
+    height: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-logo {
+    margin-left: 5px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 15px;
+    font-weight: 10px;
+    cursor: pointer;
+}
+
+.nav-opciones {
+    display: flex;
+    margin-right: 5px;
+    justify-content: center;
+    align-items: center;
+}
+
+#menu-hamburgesa-active {
+    border-radius: 5px;
+    position: absolute;
+    top: 37px;
+    background: linear-gradient(to left, #8360c3, #2ebf91);
+    font-family: 'Bebas Neue', sans-serif;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+    height: 45%;
+    display: none;
+}
+
+#menu-hamburgesa-active a {
+    margin-top: 25px;
+    font-size: 30px;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+a:visited {
+    color: black;
+}
+
+#ul {
+    font-size: 27px;
+    font-family: 'Bebas Neue', sans-serif;
+    display: flex;
+}
+
+#li {
+    cursor: pointer;
+    margin: 5px;
+}
+
+a:hover, #carrito:hover {
+    color: #999999;
+}
+
+i {
+    margin: 5px;
+    font-size: 22px;
+    color: black;
+    cursor: pointer;
+}
+
+#menu-hamburgesa {
+    display: none;
+}
+
+#carrito {
+    display: flex;
+}
+
+.carrito-abierto {
+    display: flex;
+}
+
+
+/* SECTION - HOME */
+
+section {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 350px;
+    align-items: center;
+    justify-content: center;
+}
+
+#titulo {
+    background: linear-gradient(to left, #8360c3, #2ebf91);
+    -webkit-background-clip: text;
+    color: transparent;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 200px;
+}
+
+#subtitulo {
+    background: linear-gradient(to left, #8360c3, #2ebf91);
+    -webkit-background-clip: text;
+    color: transparent;
+    font-family: 'Special Elite', cursive;
+    font-size: 30px;
+}
+
+/* SECTION - NOSOTROS */
+
+.nosotros {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    height: 500px;
+}
+
+.nosotros-imagenes {
+    display: flex;
+}
+
+.galeria-imgs {
+    margin: 30px;
+    border-radius: 10px;
+    height: 300px;
+    width: 440px;
+}
+
+.nosotros-texto {
+    background: linear-gradient(to left, #8360c3, #2ebf91);
+    -webkit-background-clip: text;
+    color: transparent;
+    font-family: 'Special Elite', cursive;
+    font-size: 18px;
+    line-height: 40px;
+    width: 90%;
+}
+
+/* SECTION - PRODUCTOS */
+
+.productos {
+    height: 100%;
+}
+
+.productos-titulo ul {
+    display: flex;
+    font-size: 30px;
+    justify-content: center;
+    align-items: center;
+}
+
+.productos-titulo li {
+    margin: 3px;
+    border-radius: 10px;
+    width: 100px;
+}
+
+.productos-titulo li:hover {
+    cursor: pointer;
+}
+
+#active {
+    background-color: #2ebf91;
+    color: black;
+}
+
+#productos-margin {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#productos-contenedor {
+    background: linear-gradient(to left, #8360c3, #2ebf91);
+    -webkit-background-clip: text;
+    color: transparent;    text-align: center;
+    display: flex;
+    flex-direction: column;
+    margin-top: 0px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 70px;
+}
+
+#cards-productos {
+    margin: 25px;
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    color: black;
+    width: 250px;
+    height: 400px;
+    font-size: 20px;
+    background-color: white;
+}
+
+#card-img {
+    border-radius: 15px;
+    margin-bottom: 5px;
+    height: 250px;
+    width: 220px;
+}
+
+#card-titulo {
+    text-align: center;
+    height: 25px;
+    width: 150px;
+    border-radius: 8px;
+    margin: 5px;
+}
+
+#card-precio {
+    text-align: center;
+    height: 25px;
+    width: 150px;
+    border-radius: 8px;
+    margin: 5px;
+}
+
+#card-envio {
+    margin-top: 5px;
+    font-size: 11px;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    color: green;
+    background-color: rgba(0, 255, 0, 0.123);
+    height: 15px;
+    width: 130px;
+    border-radius: 4px;
+}
+
+#card-button {
+    font-weight: 1000;
+    border-radius: 10px;
+    text-align: center;
+    height: 20px;
+    margin-top: 2px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    width: 130px;
+}
+
+#card-button:hover {
+    background-color: rgba(94, 255, 94, 0.662);
+    cursor: pointer;
+}
+
+/* SECTION - CONTACTO */
+
+#contacto {
+    height: 100%;
+}
+
+#contacto-contenedor {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#contacto-titulo {
+    background: linear-gradient(to left, #8360c3, #2ebf91);
+    -webkit-background-clip: text;
+    color: transparent;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 100px;
+}
+
+#maps {
+    margin-bottom: 10px;
+    border-radius: 20px;
+}
+
+#formulario {
+    margin-bottom: 10px;
+    border-radius: 20px;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+    width: 550px;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(to left, #8360c3, #2ebf91);
+    margin-left: 100px;
+}
+
+#formulario h2 {
+    color: black;
+    font-family: 'Special Elite', cursive;
+    font-size: 25px;
+    margin-bottom: 7px;
+}
+
+#formulario i {
+    font-size: 15px;
+}
+
+input {
+    margin: 3px;
+    margin-left: 25px;
+    border-width: 3.8px;
+    border-radius: 10px;
+    height: 35px;
+    width: 450px;
+}
+
+#input-text {
+    height: 40px;
+    hyphenate-character: 200px;
+}
+
+#formulario button {
+    border-radius: 5px;
+    margin-top: 10px;
+    width: 100px;
+}
+
+/* SECTION - FOOTER */ 
+
+#footer {
+    display: flex;
+    flex-direction: row;
+    height: 30px;
+    color: white;
+    justify-content: space-between;
+}
+
+#footer-contenedor {
+    display: flex;
+    flex-direction: row;
+}
+
+#footer-contenedor i {
+    margin-left: 10px;
+    color: white;
+}
+
+#footer-link {
+    margin-right: 7px;
+    color: white;
+}
+
+#footer-link:visited {
+    color: white;
+}
+
+/* VALIDACION DEL FORMULARIO */
+
+.input-icon i {
+    margin-top: 3px;
+}
+
+.input-icon {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.fa-circle-xmark {
+    color: red;
+    font-size: 5px;
+}
+
+.fa-circle-check {
+    color: greenyellow;
+    font-size: 5px;
+}
+
+.fa.circle.exclamation {
+    color: yellow;
+}
+
+.input-error {
+    border-color: rgb(255, 0, 0);
+}
+
+.input-correcto {
+    border-color: rgb(72, 242, 72);
+}
+
+.input-vacio {
+    border-color: yellow;
+}
+
+@media (max-width: 768px) {
+    /* nav */
+    body {
+        width: 100%;
+    }
+
+    #ul {
+        display: none;
+    }
+    #li {
+        display: none;
+    }
+    #menu-hamburgesa {
+        display: flex;
+    }
+
+    /* home */
+    section {
+        height: 300px;
+    }
+    #titulo {
+        text-align: center;
+        font-size: 110px;
+        width: 100%;
+    }
+    #subtitulo {
+        text-align: center;
+        width: 90%;
+    }
+
+    /* nosotros */
+    .nosotros {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        height: 100%;
+    }
+    .nosotros-texto {
+        margin-top: 15px;
+        font-size: 12px;
+    }
+    .nosotros-imagenes {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .galeria-imgs {
+        width: 90%;
+        margin: 0px;
+        margin-bottom: 15px;
+    }
+    .nosotros-imagenes img {
+        width: 90%;
+    }
+
+    /* productos */
+    ul {
+        flex-wrap: wrap;
+    }
+    #active {
+        margin: 8px;
+    }
+    #productos-contenedor {
+        width: 100%;
+    }
+    .productos {
+        width: 100%;
+    }
+    .productos-titulo {
+        font-size: 60px;
+    }
+    .productos-titulo li {
+        margin: 0;
+    }
+    #productos-margin {
+        justify-content: center;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    /* contacto */
+    #contacto {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    #contacto-contenedor {
+        margin: 0;
+        width: 90%;
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+    }
+    #maps {
+        width: 100%;
+    }
+    #formulario {
+        margin: 0;
+        width: 100%;
+    }
+    #formulario h2 {
+        font-size: 20px;
+    }
+    input {
+        width: 230px;
+    }
+}

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="phone.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Borel&family=Roboto:wght@100&family=Special+Elite&family=Titillium+Web:ital,wght@1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <title>TecnoLife</title>
+</head>
+<body>
+    <header class="nav">
+        <div class="nav-logo">
+           <h1>TECNOLIFE</h1>
+        </div>
+        <div class="nav-opciones">
+            <ul id="ul">
+                <li id="li"><a href="#home">NOSOTROS</a></li>
+                <li id="li"><a href="#productos">PRODUCTOS</a></li>
+                <li id="li"><a href="#contacto">CONTACTO</a></li>
+            </ul>
+            <i class="fa-solid fa-cart-shopping" id="carrito"></i>
+            <i class="fa-solid fa-bars" id="menu-hamburgesa"></i>
+        </div>
+    </header>
+    <section class="home" id="home">
+    <h2 id="titulo">TECNOLIFE</h2>
+    <h2 id="subtitulo">TODA LA TECNOLOGIA EN UN SOLO LUGAR</h2>
+    <div id="menu-hamburgesa-active">
+        <a class="a" href="#hero">HOME</a>
+        <a class="a" href="#us">NOSOTROS</a>
+        <a class="a" href="#productos">PRODUCTOS</a>
+        <a class="a" href="#contacto">CONTACTOS</a>
+    </div>
+    </section>
+    <section class="nosotros" id="nosotros">
+        <div class="nosotros-imagenes">
+        <img src="/imgs/otras/tienda-de-celulares.webp" class="galeria-imgs">
+        <img src="/imgs/otras/tienda-de-celulares-2.jpg" class="galeria-imgs">
+        <img src="/imgs/otras/personas-celulares.avif" class="galeria-imgs">
+        </div>
+        <div class="nosotros-texto">
+         <h2>SOMOS UN GRUPO DE EMPRENDEDORES QUE APOSTAMOS A LA INCLUSION TECNOLOGICA CON GRAN VARIEDAD DE MARCAS Y PRECIOS PARA TODOS LOS BOLSILLOS, ENCONTRA EL TUYO!</h2>
+        </div>
+    </section>
+    <hr>
+    <section class="productos" id="productos">
+        <div id="productos-contenedor">
+            <div class="productos-titulo">
+                <h2 id="color-productos">NUESTROS PRODUCTOS</h2>
+                <ul>
+                    <li id="active">TODOS</li>
+                    <li>SAMSUNG</li>
+                    <li>APPLE</li>
+                    <li>MOTOROLA</li>
+                </ul>
+            </div>
+            <div id="productos-margin">
+            </div>
+        </div>
+    </section>
+    <hr>
+    <section class="contacto" id="contacto">
+            <h2 id="contacto-titulo">CONTACTO</h2>
+        <div id="contacto-contenedor">
+            <div class="contacto-map">
+            <iframe src="//www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d52543.39694957459!2d-58.4487740535925!3d-34.60511457587913!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bccb6e51e0d12d%3A0xb32e2c8d2b1e801d!2sTecnoLife%20Argentina!5e0!3m2!1ses!2sar!4v1693263076878!5m2!1ses!2sar" width="500" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="maps" id="maps"></iframe>
+        </div>
+        <div class="contacto-form">
+            <form id="formulario">
+                <h2>PARA MAS INFORMACION <i class="fa-solid fa-arrow-turn-down"></i></h2>
+                
+             <div class="input-icon">
+                <input type="text" name="nombre" id="input-nombre" placeholder="  nombre*" class="input-form" required title="ingrese un nombre valido">
+                <i id="nombre-error" class="fa-solid fa-circle-xmark" style="font-size: 25px; color: transparent;"></i>
+            </div>
+            <div class="input-icon">
+                <input type="text" name="telefono" id="input-telefono" placeholder="  numero de telefono*" class="input-form" required> 
+                <i id="numero-error" class="fa-solid fa-circle-xmark" style="font-size: 25px;color: transparent;"></i>
+            </div>
+            <div class="input-icon">
+                <input type="email" name="email" id="input-email" placeholder="  email*" class="input-form" required title="Ingrese un email valido">
+                <i id="email-error" class="fa-solid fa-circle-xmark" style="font-size: 25px; color: transparent;"></i>
+            </div>
+            <div class="input-icon">
+                <input type="text" placeholder="  escriba su consulta aqui" id="input-text" class="input-form">
+                <i id="consulta-error" class="fa-solid fa-circle-xmark" style="font-size: 25px; color: transparent;" ></i>
+            </div>
+
+                <button type="submit" class="enviar">ENVIAR</button>
+            </form>
+        </div>
+       </div>
+    </section>
+    <hr>
+    <section class="footer" id="footer">
+        <div id="footer-contenedor">
+            <a href="https://www.google.com/intl/es-419/gmail/about/" target="_blank"><i class="fa-solid fa-envelope"></i></a>
+            <a href="https://www.instagram.com/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.youtube.com/" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+        <p><a href="https://www.samsung.com/ar/info/privacy/" target="_blank" id="footer-link">Politica de privacidad</a></p>
+    </section>
+    <script src="/data.js"></script>
+    <script src="/main.js"></script>
+</body>
+</html>
