@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="phone.css">
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,11 +29,27 @@
     <section class="home" id="home">
     <h2 id="titulo">TECNOLIFE</h2>
     <h2 id="subtitulo">TODA LA TECNOLOGIA EN UN SOLO LUGAR</h2>
+    <div id="carrito-active">
+        <div class="contenedor-titulo-basura"><h2 id="carrito-advertencia">AUN NO HAY PRODUCTOS EN EL CARRITO!</h2><i class="fa-solid fa-trash" id="fa-trash"></i></div>
+        <div id="productos-content">
+        </div>
+        <button id="finalizar-pedido">finalizar pedido</button>
+
+        <!-- <div id="producto-agregado">
+            <div id="contenedor-carrito-data">
+                <p id="producto-carrito-nombre"></p>
+                <p id="producto-carrito-precio"></p>
+            </div>
+            <img src="" id="producto-carrito-img">
+            <p id="producto-carrito-cantidad">0</p>
+            <!-- <i class="fa-solid fa-trash" id="fa-trash"></i> -->
+        </div> -->
+
+    </div>
     <div id="menu-hamburgesa-active">
-        <a class="a" href="#hero">HOME</a>
-        <a class="a" href="#us">NOSOTROS</a>
+        <a class="a" href="#home">NOSOTROS</a>
         <a class="a" href="#productos">PRODUCTOS</a>
-        <a class="a" href="#contacto">CONTACTOS</a>
+        <a class="a" href="#contacto">CONTACTO</a>
     </div>
     </section>
     <section class="nosotros" id="nosotros">
@@ -53,10 +68,10 @@
             <div class="productos-titulo">
                 <h2 id="color-productos">NUESTROS PRODUCTOS</h2>
                 <ul>
-                    <li id="active">TODOS</li>
-                    <li>SAMSUNG</li>
-                    <li>APPLE</li>
-                    <li>MOTOROLA</li>
+                    <li id="boton-todos" class="active">TODOS</li>
+                    <li id="boton-samsung">SAMSUNG</li>
+                    <li id="boton-apple">APPLE</li>
+                    <li id="boton-motorola">MOTOROLA</li>
                 </ul>
             </div>
             <div id="productos-margin">
@@ -68,18 +83,18 @@
             <h2 id="contacto-titulo">CONTACTO</h2>
         <div id="contacto-contenedor">
             <div class="contacto-map">
-            <iframe src="//www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d52543.39694957459!2d-58.4487740535925!3d-34.60511457587913!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bccb6e51e0d12d%3A0xb32e2c8d2b1e801d!2sTecnoLife%20Argentina!5e0!3m2!1ses!2sar!4v1693263076878!5m2!1ses!2sar" width="500" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="maps" id="maps"></iframe>
+            <iframe src="//www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d52543.39694957459!2d-58.4487740535925!3d-34.60511457587913!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bccb6e51e0d12d%3A0xb32e2c8d2b1e801d!2sTecnoLife%20Argentina!5e0!3m2!1ses!2sar!4v1693263076878!5m2!1ses!2sar" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="maps" id="maps"></iframe>
         </div>
         <div class="contacto-form">
             <form id="formulario">
                 <h2>PARA MAS INFORMACION <i class="fa-solid fa-arrow-turn-down"></i></h2>
                 
              <div class="input-icon">
-                <input type="text" name="nombre" id="input-nombre" placeholder="  nombre*" class="input-form" required title="ingrese un nombre valido">
+                <input type="name" name="nombre" id="input-nombre" placeholder="  nombre*" class="input-form" required title="ingrese un nombre valido">
                 <i id="nombre-error" class="fa-solid fa-circle-xmark" style="font-size: 25px; color: transparent;"></i>
             </div>
             <div class="input-icon">
-                <input type="text" name="telefono" id="input-telefono" placeholder="  numero de telefono*" class="input-form" required> 
+                <input type="numbers" name="telefono" id="input-telefono" placeholder="  numero de telefono*" class="input-form" required> 
                 <i id="numero-error" class="fa-solid fa-circle-xmark" style="font-size: 25px;color: transparent;"></i>
             </div>
             <div class="input-icon">

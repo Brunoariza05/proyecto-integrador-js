@@ -18,6 +18,14 @@ body {
     background-color: black;
 }
 
+.nav {
+    top: 0;
+    position: fixed;
+    border-bottom: 1px solid;
+    border-color: white;
+    z-index: 1000;
+}
+
 header {
     background: linear-gradient(to left, #8360c3, #2ebf91);
     height: 40px;
@@ -25,6 +33,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
 }
 
 .nav-logo {
@@ -42,23 +51,164 @@ header {
     align-items: center;
 }
 
-#menu-hamburgesa-active {
+/*carrito*/
+#carrito-active {
+    font-family: 'Bebas Neue', sans-serif;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    background: linear-gradient(to bottom, #8360c3, #2ebf91);
+    position: fixed;
+    top: 40px;
+    right: 0;
+    width: 20%;
+    height: wrap;
+    overflow-y: auto;
+    border: 01px solid #ffffff;
+    z-index: 1000;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+}
+
+.margin-topp {
+    margin-top: 0px;
+}
+
+.margin-tope {
+    margin-top: 100%;
+}
+
+#carrito-advertencia {
+    text-align: center;
+    height: wrap;
+    display: flex;
+    letter-spacing: 0.5px;
+    font-weight: 300; 
+}
+
+#productos-card-content {
+    display: flex;
+    flex-direction: column;
+    height: wrap;
+}
+
+#producto-agregado {
+    text-align: center;
+    margin: 5px;
+    display: flex;
+    width: 263px;
+    height: 70px;
     border-radius: 5px;
+    background-color: white;
+}
+
+#carrito-pedido {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    font-size: 22px;
+    letter-spacing: 1px;
+    font-weight: 300;
+}
+
+#contenedor-carrito-data {
+    display: flex;
+    margin-left: 10px;
+    flex-direction: column;
+}
+
+#producto-carrito-nombre {
+    margin-top: 13px;
+}
+
+#producto-carrito-cantidad {
+    margin-top: 25px;
+    margin-left: 0px;
+    background-color: rgba(0, 255, 0, 0.415);
+    width: 80px;
+    height: 20px;
+    border-radius: 5px;
+}
+
+.fa-trash, #fa-trash{
+    font-size: 16px;
+    cursor: pointer;
+    display: none;
+    margin-top: 15px;
+    margin-left: 10px;
+    color: rgb(151, 0, 0);
+}
+
+.contenedor-titulo-basura {
+    display: flex;
+}
+
+#producto-carrito-precio {
+    background-color: rgba(0, 255, 0, 0.415);
+    border-radius: 10px;
+    width: 90px;
+    height: 20px;
+}
+
+#producto-carrito-img {
+    margin-top: 4px;
+    margin-left: 0px;
+    margin-right: 0px;
+    height: 60px;
+    width: 68px;
+    border-radius: 10px;
+}
+
+#finalizar-pedido {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 100px;
+    font-size: 15px;
+    border-radius: 5px;
+    border-color: white;
+    font-family: 'Bebas Neue', sans-serif;
+    bottom: 0;
+    margin-bottom: 10px;
+    cursor: pointer;
+    margin-top: 5pin;
+}
+
+.fa-minus {
+    font-size: 20px;
+}
+
+#finalizar-pedido:hover {
+    background-color: rgba(0, 255, 0, 0.432);
+    border: 1px solid;
+    border-color: black;
+}
+
+/* menu hamburgesa */
+
+#menu-hamburgesa-active {
+    border-radius: 15px;
     position: absolute;
-    top: 37px;
+    position: fixed;
+    top: 30px;
     background: linear-gradient(to left, #8360c3, #2ebf91);
     font-family: 'Bebas Neue', sans-serif;
     display: flex;
     flex-direction: column;
     text-align: center;
     width: 100%;
-    height: 45%;
+    height: 30%;
     display: none;
 }
 
 #menu-hamburgesa-active a {
     margin-top: 25px;
-    font-size: 30px;
+    font-size: 7vw;
+}
+
+#menu-hamburgesa-active a:visited {
+    color: black;
 }
 
 a {
@@ -111,7 +261,7 @@ section {
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 350px;
+    height: 400px;
     align-items: center;
     justify-content: center;
 }
@@ -122,6 +272,8 @@ section {
     color: transparent;
     font-family: 'Bebas Neue', sans-serif;
     font-size: 200px;
+    position: absolute;
+    margin-top: 100px;
 }
 
 #subtitulo {
@@ -130,6 +282,8 @@ section {
     color: transparent;
     font-family: 'Special Elite', cursive;
     font-size: 30px;
+    position: absolute;
+    margin-top: 320px;
 }
 
 /* SECTION - NOSOTROS */
@@ -168,26 +322,46 @@ section {
     height: 100%;
 }
 
+.productos-titulo {
+    margin-top: 32px;
+}
+
 .productos-titulo ul {
     display: flex;
     font-size: 30px;
     justify-content: center;
     align-items: center;
+    margin: 0px;
 }
 
 .productos-titulo li {
-    margin: 3px;
     border-radius: 10px;
     width: 100px;
+}
+
+#boton-motorola {
+    width: 110px;
+    margin: 5px;
+}
+
+#boton-apple {
+    width: 75px;
+    margin: 10px;
+}
+
+#boton-todos {
+    width: 80px;
+    margin: 8px;
 }
 
 .productos-titulo li:hover {
     cursor: pointer;
 }
 
-#active {
-    background-color: #2ebf91;
+.active {
+    background: linear-gradient(to left, #8360c3, #2ebf91);
     color: black;
+    width: 10%;
 }
 
 #productos-margin {
@@ -206,7 +380,7 @@ section {
     font-size: 70px;
 }
 
-#cards-productos {
+.cards-productos {
     margin: 25px;
     font-family: 'Roboto', sans-serif;
     display: flex;
@@ -290,11 +464,13 @@ section {
     color: transparent;
     font-family: 'Bebas Neue', sans-serif;
     font-size: 100px;
+    margin-top: 32px;
 }
 
 #maps {
     margin-bottom: 10px;
     border-radius: 20px;
+    width: 500px;
 }
 
 #formulario {
@@ -423,19 +599,29 @@ input {
     #menu-hamburgesa {
         display: flex;
     }
-
+    .carrito-activo {
+        width: 100%;
+    }
+    /* carrito */
+    #carrito-active {
+        width: 100%;
+    }
     /* home */
     section {
         height: 300px;
+        margin-bottom: 0px;
+        margin-top: 5px;
     }
     #titulo {
         text-align: center;
         font-size: 110px;
         width: 100%;
+        margin-bottom: 120px;
     }
     #subtitulo {
         text-align: center;
         width: 90%;
+        margin-bottom: 140px;
     }
 
     /* nosotros */
@@ -477,6 +663,7 @@ input {
     }
     .productos-titulo {
         font-size: 60px;
+        margin-top: 32px;
     }
     .productos-titulo li {
         margin: 0;
@@ -493,6 +680,9 @@ input {
         flex-direction: column;
         justify-content: center;
         align-items: center;
+    }
+    #contacto-titulo{
+        margin-top: 32px;
     }
     #contacto-contenedor {
         margin: 0;
@@ -514,4 +704,276 @@ input {
     input {
         width: 230px;
     }
+    /* footer */
+    #footer {
+        height: 40px;
+        margin:0;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+ /* nav */
+ body {
+    width: 100%;
+}
+
+#ul {
+    display: none;
+}
+#li {
+    display: none;
+}
+#menu-hamburgesa {
+    display: flex;
+}
+#menu-hamburgesa-active{ 
+    top: 30px;
+    height: 37%;
+}
+#menu-hamburgesa-active a{
+    font-size: 45px;
+};
+.carrito-activo {
+    width: 100%;
+}
+/* carrito */
+#carrito-active {
+    width: 37%;
+    right: 0;
+}
+/* home */
+section {
+    height: 300px;
+    margin-bottom: 0px;
+    margin-top: 5px;
+}
+#titulo {
+    text-align: center;
+    font-size: 110px;
+    width: 100%;
+    margin-bottom: 120px;
+}
+#subtitulo {
+    text-align: center;
+    width: 90%;
+    margin-bottom: 140px;
+}
+
+/* nosotros */
+.nosotros {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 100%;
+}
+.nosotros-texto {
+    margin-top: 15px;
+    font-size: 12px;
+}
+.nosotros-imagenes {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.galeria-imgs {
+    height: 400px;
+    margin-bottom: 15px;
+}
+.nosotros-imagenes img {
+    width: 90%;
+}
+
+/* productos */
+ul {
+    flex-wrap: wrap;
+}
+#active {
+    margin: 8px;
+}
+#productos-contenedor {
+    width: 100%;
+}
+.productos {
+    width: 100%;
+}
+.productos-titulo {
+    font-size: 60px;
+    margin-top: 32px;
+}
+.productos-titulo li {
+    margin: 0;
+}
+#productos-margin {
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* contacto */
+#contacto {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#contacto-titulo{
+    margin-top: 32px;
+}
+#contacto-contenedor {
+    margin: 0;
+    width: 100%;
+    margin-bottom: 20px;
+}
+#maps {
+    width: 600px;
+    left: 5px;
+    margin: 10px;
+}
+#contacto-contenedor {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+#formulario {
+    margin: 0px;
+    width: 600px;
+    left: 0px;
+}
+#formulario h2 {
+    font-size: 20px;
+}
+input {
+    width: 500px;
+}
+/* footer */
+#footer {
+    height: 40px;
+    margin:0;
+}
+}
+@media (min-width: 1025px) and (max-width: 1500px) {
+ /* nav */
+ body {
+    width: 100%;
+}
+.carrito-activo {
+    width: 100%;
+}
+/* carrito */
+#carrito-active {
+    width: 30%;
+    right: 0;
+}
+/* home */
+section {
+    height: 300px;
+    margin-bottom: 0px;
+    margin-top: 5px;
+}
+#titulo {
+    text-align: center;
+    font-size: 200px;
+    width: 100%;
+    margin-bottom: 90px;
+}
+#subtitulo {
+    text-align: center;
+    width: 100%;
+    font-size: 35px;
+    margin-bottom: 110px;
+}
+
+/* nosotros */
+.nosotros {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+.nosotros-texto {
+    margin-top: 15px;
+    font-size: 20px;
+}
+.nosotros-imagenes {
+    display: flex;
+    flex-direction: column;
+}
+.galeria-imgs {
+    height: 600px;
+    width: 1000px;
+    margin: 10px;
+    margin-bottom: 15px;
+}
+
+/* productos */
+ul {
+    flex-wrap: wrap;
+}
+#active {
+    margin: 8px;
+}
+#productos-contenedor {
+    width: 100%;
+}
+.productos {
+    width: 100%;
+}
+.productos-titulo {
+    font-size: 60px;
+    margin-top: 32px;
+}
+.productos-titulo li {
+    margin: 0;
+}
+#productos-margin {
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* contacto */
+#contacto {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#contacto-titulo{
+    margin-top: 32px;
+}
+#contacto-contenedor {
+    margin: 0;
+    width: 100%;
+    margin-bottom: 20px;
+}
+#maps {
+    width: 420px;
+    left: 5px;
+    margin: 20px;
+}
+#contacto-contenedor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+#formulario {
+    margin: 0px;
+    width: 420px;
+    left: 0px;
+}
+#formulario h2 {
+    font-size: 20px;
+}
+input {
+    width: 350px;
+}
+/* footer */
+#footer {
+    height: 40px;
+    margin:0;
+}
 }
