@@ -21,6 +21,7 @@ body {
 .nav {
     top: 0;
     position: fixed;
+    width: 100%;
     border-bottom: 1px solid;
     border-color: white;
     z-index: 1000;
@@ -126,7 +127,7 @@ header {
     margin-left: 0px;
     background-color: rgba(0, 255, 0, 0.415);
     width: 80px;
-    height: 20px;
+    height: 25px;
     border-radius: 5px;
 }
 
@@ -175,8 +176,22 @@ header {
     margin-top: 5pin;
 }
 
-.fa-minus {
-    font-size: 20px;
+.fa-minus, .fa-plus {
+    font-size: 13px;
+}
+
+#contenedor-suma-resta {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(0, 255, 0, 0.415);
+    border-radius: 10px; 
+    height: 45px;   
+    margin: 3px;
+    margin-top: 10px;
+}
+
+.fa-minus:hover, .fa-plus:hover {
+    scale: 1.5;
 }
 
 #finalizar-pedido:hover {
@@ -318,6 +333,46 @@ section {
 
 /* SECTION - PRODUCTOS */
 
+#producto-en-carrito {
+    background-color: rgba(0, 255, 0, 0.659);
+    text-align: center;
+    height: 8%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 9999;
+    display: none;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+#aviso-producto {
+    color: rgba(0, 0, 0, 0.779);
+    font-size: 30px;
+    font-family: 'Bebas Neue', sans-serif;
+}
+
+@keyframes mostrarMensaje {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+}
+
+.ocultar {
+    animation: ocultarMensaje 0.5s ease-in;
+}
+
+.mostrar {
+    animation: mostrarMensaje 0.5s ease-in-out;
+}
+
+@keyframes ocultarMensaje {
+    from { transform: translateY(0); }
+    to { transform: translateY(100%); }
+}
+
 .productos {
     height: 100%;
 }
@@ -367,6 +422,7 @@ section {
 #productos-margin {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 #productos-contenedor {
@@ -478,7 +534,7 @@ section {
     border-radius: 20px;
     justify-content: center;
     align-items: center;
-    height: 300px;
+    height: 400px;
     width: 550px;
     display: flex;
     flex-direction: column;
@@ -490,15 +546,37 @@ section {
     color: black;
     font-family: 'Special Elite', cursive;
     font-size: 25px;
-    margin-bottom: 7px;
 }
 
 #formulario i {
     font-size: 15px;
 }
 
+.form-mensaje-error {
+    font-family: 'Noto Serif';
+    font-weight: 1000;
+    font-size: 15px;
+    color: red;
+}
+
+.form-mensaje-vacio {
+    font-family: 'Noto Serif';
+    font-weight: 1000;
+    font-size: 15px;
+    color: rgb(255, 251, 0);
+}
+
+#input-vacio-nombre, #input-vacio-numero, #input-vacio-email {
+    display: none;
+} 
+
+
+#advertencia-nombre, #advertencia-numero, #advertencia-numero2, #advertencia-email {
+    display: none;
+}
+
 input {
-    margin: 3px;
+    margin: 10px;
     margin-left: 25px;
     border-width: 3.8px;
     border-radius: 10px;
@@ -584,12 +662,21 @@ input {
     border-color: yellow;
 }
 
-@media (max-width: 768px) {
+@media ((min-width: 325px) and (max-width: 768px)) {
     /* nav */
     body {
         width: 100%;
+        margin-top: 0px;
     }
-
+    header {
+        margin: 0px;
+        position: relative;
+    }
+    .nav {
+        margin: 0px;
+        width: 100%;
+        max-width: 100vw;
+    }
     #ul {
         display: none;
     }
@@ -598,23 +685,34 @@ input {
     }
     #menu-hamburgesa {
         display: flex;
+        max-width: 325px;
+    }
+    #menu-hamburgesa-active {
+        width: 100%;
+        max-width: 325px;
     }
     .carrito-activo {
         width: 100%;
+        max-width: 325px;
     }
     /* carrito */
     #carrito-active {
         width: 100%;
+        max-width: 323px;
+        right: 0;
+        left: 0;
     }
     /* home */
     section {
         height: 300px;
         margin-bottom: 0px;
         margin-top: 5px;
+        width: 100%;
+        max-width: 100vw;
     }
     #titulo {
         text-align: center;
-        font-size: 110px;
+        font-size: 24vw;
         width: 100%;
         margin-bottom: 120px;
     }
@@ -622,6 +720,10 @@ input {
         text-align: center;
         width: 90%;
         margin-bottom: 140px;
+        font-size: 25px;
+    }
+    .nav-opciones {
+        margin-right: 0px;
     }
 
     /* nosotros */
@@ -708,6 +810,7 @@ input {
     #footer {
         height: 40px;
         margin:0;
+        width: 100%;
     }
 }
 
@@ -716,7 +819,6 @@ input {
  body {
     width: 100%;
 }
-
 #ul {
     display: none;
 }

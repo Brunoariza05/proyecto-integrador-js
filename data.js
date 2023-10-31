@@ -1,9 +1,11 @@
 let productos = [ 
     {
         marca: "Samsung",
+        id: 0,
         modelo: "S23 ultra",
         precio: "500.000",
-        imagen: "/imgs/productos/s23-ultra.jpg"
+        imagen: "/imgs/productos/s23-ultra.jpg",
+        value: false
     },
     {
         marca: "Samsung",

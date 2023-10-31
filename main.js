@@ -5,7 +5,6 @@ const menuHamburgesa = document.getElementById("menu-hamburgesa");
 const menuHamburgesaContenedor = document.getElementById("menu-hamburgesa-active");
 const menuHamburgesaOpciones = document.querySelectorAll(".a");
 // elementos del carrito 
-// const botonComprar = document.getElementsByClassName("card-button");
 const logoCarrito = document.getElementById("carrito");
 const carrito = document.getElementById("carrito-active");
 const carritoVacio = document.getElementById("carrito-advertencia");
@@ -23,6 +22,7 @@ const btnTodos = document.getElementById("boton-todos");
 const btnSamsung = document.getElementById("boton-samsung");
 const btnApple = document.getElementById("boton-apple");
 const btnMotorola = document.getElementById("boton-motorola");
+const productoAgregado = document.getElementById("producto-en-carrito");
 // elementos del formulario
 const form = document.getElementById("formulario");
 const inputName = document.getElementById("input-nombre");
@@ -34,6 +34,13 @@ const emailError = document.getElementById("email-error");
 const nombreError = document.getElementById("nombre-error");
 const numeroError = document.getElementById("numero-error");
 const check = document.querySelectorAll(".input-icon i");
+const advertenciaNombre = document.getElementById("advertencia-nombre");
+const advertenciaNumero = document.getElementById("advertencia-numero");
+const advertenciaNumero2 = document.getElementById("advertencia-numero2");
+const advertenciaEmail = document.getElementById("advertencia-email");
+const inputVacioNombre = document.getElementById("input-vacio-nombre");
+const inputVacioNumero = document.getElementById("input-vacio-numero");
+const inputVacioEmail = document.getElementById("input-vacio-email");
 // FUNCIONES PARA RENDERIZAR PRODUCTOS 
 
 function mostrarProductos () { // FUNCION PARA MOSTRAR PRODUCTOS DESDE JS
@@ -70,7 +77,42 @@ function mostrarProductos () { // FUNCION PARA MOSTRAR PRODUCTOS DESDE JS
 
 // FUNCIONES PARA VALIDAR FORMULARIO
 
-form.addEventListener("submit", function (e) {
+form.addEventListener("submit", function validarForm (e){
+  // e.preventDefault();
+  // val email 
+  const valor = inputEmail.value;
+  if (!/^[\w\.-]+@[\w\.-]+\.\w+$/.test(valor) && valor !== "") {
+    e.preventDefault();
+    return false;
+  } 
+  if (/^\s*$/.test(inputEmail.value)) {
+    e.preventDefault();
+    return false;
+  }
+  // val name 
+  const valor2 = inputName.value;
+  if (/\d/.test(valor2)) {
+    e.preventDefault();
+    return false;
+  } 
+  if (/^\s*$/.test(inputName.value)) {
+    e.preventDefault();
+    return false;
+  }
+  // val num 
+  const valor3 = inputNumber.value;
+  if (!/^\d*$/.test(valor3)) {
+    e.preventDefault();
+    return false;
+  }
+  if (/^\s*$/.test(inputNumber.value)) {
+    e.preventDefault();
+    return false;
+  }
+
+});
+
+function formEnviado () {
   e.preventDefault();
   //
   inputEmail.classList.remove("input-correcto");
@@ -95,11 +137,11 @@ form.addEventListener("submit", function (e) {
   localStorage.setItem(`FormularioConsulta`, consultaFormulario);
   form.reset();
 
-});
+};
 
 
 // input email 
-inputEmail.addEventListener("input", function () {
+inputEmail.addEventListener("input", function validarEmail () {
   const valor = inputEmail.value;
 
   if (!/^[\w\.-]+@[\w\.-]+\.\w+$/.test(valor) && valor !== "") {
@@ -109,6 +151,8 @@ inputEmail.addEventListener("input", function () {
     emailError.style.color = "red";
     emailError.classList.add("fa-circle-xmark"); // agregamos cruz
     emailError.classList.remove("fa-circle-check");
+    advertenciaEmail.style.display = "flex";
+    inputVacioEmail.style.display = "none";
   } else {
     inputEmail.classList.add("input-correcto"); // agregamos correcto
     inputEmail.classList.remove("input-error");
@@ -116,6 +160,8 @@ inputEmail.addEventListener("input", function () {
     emailError.style.color = "green";
     emailError.classList.remove("fa-circle-xmark"); // agregamos check
     emailError.classList.add("fa-circle-check");
+    advertenciaEmail.style.display = "none";
+    inputVacioEmail.style.display = "none";
   }
 
   if (/^\s*$/.test(inputEmail.value)) {
@@ -124,6 +170,7 @@ inputEmail.addEventListener("input", function () {
     emailError.style.color = "yellow";
     emailError.classList.remove("fa-circle-check");
     emailError.classList.remove("fa-circle-xmark");
+    inputVacioEmail.style.display = "flex";
   }
 });
 
@@ -134,11 +181,12 @@ inputEmail.addEventListener("blur", function () {
     emailError.style.color = "yellow";
     emailError.classList.remove("fa-circle-check");
     emailError.classList.remove("fa-circle-xmark");
+    inputVacioEmail.style.display = "flex";
   }
 });
 
 // input name
-inputName.addEventListener("input", function () {
+inputName.addEventListener("input", function validarNombre () {
   const valor = inputName.value;
 
   if (/\d/.test(valor)) {
@@ -148,6 +196,8 @@ inputName.addEventListener("input", function () {
     nombreError.style.color = "red";
     nombreError.classList.add("fa-circle-xmark");
     nombreError.classList.remove("fa-circle-check");
+    advertenciaNombre.style.display = "flex";
+    inputVacioNombre.style.display = "none";
   } else {
     inputName.classList.add("input-correcto"); // agregamos correcto
     inputName.classList.remove("input-error");
@@ -155,14 +205,17 @@ inputName.addEventListener("input", function () {
     nombreError.style.color = "green";
     nombreError.classList.add("fa-circle-check");
     nombreError.classList.remove("fa-circle-xmark");
+    advertenciaNombre.style.display = "none";
+    inputVacioNombre.style.display = "none";
   }
 
-  if (/^\s*$/.test(inputName.value)) {
+  if (/^\s*$/.test(valor)) {
     inputName.classList.add("input-vacio"); // agregar error si el input esta vacio
     nombreError.classList.add("fa-circle-exclamation");
     nombreError.style.color = "yellow";
     nombreError.classList.remove("fa-circle-check");
     nombreError.classList.remove("fa-circle-xmark");
+    inputVacioNombre.style.display = "flex";
   }
 });
 
@@ -173,21 +226,24 @@ inputName.addEventListener("blur", function () {
     nombreError.style.color = "yellow";
     nombreError.classList.remove("fa-circle-check");
     nombreError.classList.remove("fa-circle-xmark");
+    inputVacioNombre.style.display = "flex";
   }
 });
 
 
 // input numero
-inputNumber.addEventListener("input", function () {
+inputNumber.addEventListener("input", function validarNumero () {
   const valor = inputNumber.value;
 
-  if (!/^\d*$/.test(valor)) {
+  if (!/^\d*$/.test(valor), !/\d{7,}/.test(inputNumber.value)) {
     inputNumber.classList.add("input-error"); // agregamos error
     inputNumber.classList.remove("input-correcto");
     inputNumber.classList.remove("input-vacio");
     numeroError.style.color = "red";
     numeroError.classList.add("fa-circle-xmark");
     numeroError.classList.remove("fa-circle-check");
+    advertenciaNumero2.style.display = "none";
+    inputVacioNumero.style.display = "none";
   } else {
     inputNumber.classList.add("input-correcto"); // agregamos correcto
     inputNumber.classList.remove("input-error");
@@ -195,6 +251,21 @@ inputNumber.addEventListener("input", function () {
     numeroError.style.color = "green";
     numeroError.classList.add("fa-circle-check");
     numeroError.classList.remove("fa-circle-xmark");
+    advertenciaNumero.style.display = "none";
+    advertenciaNumero2.style.display = "none";
+    inputVacioNumero.style.display = "none";
+  }
+
+  if (!/\d{7,}/.test(inputNumber.value)) {
+    advertenciaNumero2.style.display = "flex";
+  } else {
+    advertenciaNumero2.style.display = "none";
+  }
+
+  if (!/^\d*$/.test(valor)) {
+    advertenciaNumero.style.display = "flex";
+  } else {
+    advertenciaNumero.style.display = "none";
   }
 
   if (/^\s*$/.test(inputNumber.value)) {
@@ -203,7 +274,11 @@ inputNumber.addEventListener("input", function () {
     numeroError.style.color = "yellow";
     numeroError.classList.remove("fa-circle-check");
     numeroError.classList.remove("fa-circle-xmark");
+    inputVacioNumero.style.display = "flex";
+    advertenciaNumero.style.display = "none";
+    advertenciaNumero2.style.display = "none";
   }
+
 });
 
 inputNumber.addEventListener("blur", function () {
@@ -213,6 +288,7 @@ inputNumber.addEventListener("blur", function () {
     numeroError.style.color = "yellow";
     numeroError.classList.remove("fa-circle-check");
     numeroError.classList.remove("fa-circle-xmark");
+    inputVacioNumero.style.display = "flex";
   } 
 });
 
@@ -247,29 +323,149 @@ const valorOriginal = carritoVacio.innerText;
 let carritoLS = JSON.parse(localStorage.getItem("carritoLS")) || [];
 
 function guardarLS(infoProducto) {
+  const existeProducto = carritoLS.find(function (tel) {
+    return tel.nombreCelular === infoProducto.nombreCelular;
+  })
+  if (existeProducto){
+    console.log("existe");
+    return;
+  } else {
+  console.log("este");
   carritoLS.push(infoProducto);
   localStorage.setItem("productoData", JSON.stringify(carritoLS));
   actualizarInterfazUsuario(carritoLS);
   }
+  }
+
+  function agregarUnidad (celu) {
+    console.log(celu.cantidad);
+    if (carritoLS.map((cel) => 
+    cel.nombreCelular === celu.nombreCelular)){
+      celu.cantidad += 1;
+      updateCart(celu);
+    }
+    console.log(celu.nombreCelular, celu.cantidad);
+  };
+
+  function restarUnidad (celu, menosCantPadre) {
+    console.log(celu.cantidad);
+    if (carritoLS.map((cel) => 
+    cel.nombreCelular === celu.nombreCelular)){
+      celu.cantidad -= 1;
+      if (celu.cantidad === 0) {
+        const productoBuscado = celu.nombreCelular;
+        menosCantPadre.style.display = "none";
+        carroVacio();
+      } else {
+        updateCart(celu);
+      }
+    }
+    console.log(celu.nombreCelular, celu.cantidad);
+  }
+
+  function sumarUnidades (nombreCelu) {
+    const existeCelu = carritoLS.find((item) => item.nombreCelular === nombreCelu); 
+    if (nombreCelu) {
+    agregarUnidad(existeCelu);
+    }
+  };
+
+  function restarUnidades (nombreCelu, menosCantPadre) {
+    console.log(nombreCelu);
+    const existeCelu = carritoLS.find((item) => item.nombreCelular === nombreCelu); 
+    restarUnidad(existeCelu, menosCantPadre);
+  }
+
+  function htmlMostrar (productoElegido) {;
+    const contenedorCardsCarrito = document.createElement("div");
+    contenedorCardsCarrito.id = "productos-card-content";
+    contenedorCardsCarrito.innerHTML = `        
+    <div id="producto-agregado" class="hey">
+    <div id="contenedor-carrito-data">
+        <p id="producto-carrito-nombre">${productoElegido.nombreCelular}</p>
+        <p id="producto-carrito-precio">${productoElegido.precioCelular}</p>
+    </div>
+    <img src="${productoElegido.imagenCelular}" id="producto-carrito-img">
+    <p id="producto-carrito-cantidad">Cantidad : ${productoElegido.cantidad}</p>
+    <div id="contenedor-suma-resta">
+    <i class="fa-solid fa-minus" class="fa-minus" id="${productoElegido.nombreCelular}resta"></i>
+    <i class="fa-solid fa-plus" class="fa-plus" id="${productoElegido.nombreCelular}"></i>
+    </div>
+</div>
+    `
+    carritoContenedor.appendChild(contenedorCardsCarrito);
+  }
+
+  let carritoContent = [];
+
+  function sumaRestaFunction (productoElegido) {
+    idMas = productoElegido.nombreCelular;
+    idMenos = productoElegido.nombreCelular + "resta";
+    const masCantidad = document.getElementById(idMas);
+    const menosCantidad = document.getElementById(idMenos);
+    masCantidad.addEventListener("click", function (e) {
+      const masCant = e.target.parentElement.parentElement.children[0].children[0].textContent;
+      console.log(masCant);
+      sumarUnidades(masCant);
+          })
+    menosCantidad.addEventListener("click", function (e) {
+      const menosCantPadre = e.target.parentElement.parentElement;
+      // console.log(menosCantPadre);
+      const menosCant = e.target.parentElement.parentElement.children[0].children[0].textContent;
+      console.log(menosCant);
+      restarUnidades(menosCant, menosCantPadre);
+    })
+  };
 
   const mostrarHTML = () => {
     carritoContenedor.innerHTML = "";
     allProducts.forEach(productoElegido => {
+      // if (carritoLS.map(card => {
+      //   card.nombreCelular === productoElegido;
+      // })){
+      //   return;
+      // } 
+      console.log(allProducts);
       const contenedorCardsCarrito = document.createElement("div");
       contenedorCardsCarrito.id = "productos-card-content";
       contenedorCardsCarrito.innerHTML = `        
-      <div id="producto-agregado">
+      <div id="producto-agregado" class="hey">
       <div id="contenedor-carrito-data">
           <p id="producto-carrito-nombre">${productoElegido.nombreCelular}</p>
           <p id="producto-carrito-precio">${productoElegido.precioCelular}</p>
       </div>
       <img src="${productoElegido.imagenCelular}" id="producto-carrito-img">
       <p id="producto-carrito-cantidad">Cantidad : ${productoElegido.cantidad}</p>
+      <div id="contenedor-suma-resta">
+      <i class="fa-solid fa-minus" class="fa-minus" id="${productoElegido.nombreCelular}resta"></i>
+      <i class="fa-solid fa-plus" class="fa-plus" id="${productoElegido.nombreCelular}"></i>
+      </div>
   </div>
       `
       carritoContenedor.appendChild(contenedorCardsCarrito);
-    } )
-  } 
+      // mas y menos productos 
+      sumaRestaFunction(productoElegido);
+      });
+    } 
+    // )} 
+
+  function carroVacio () {
+    const elementosCarrito = document.querySelectorAll(".hey");
+    let displayNone = true;
+    elementosCarrito.forEach(elemento => {
+      if (elemento.style.display !== "none") {
+        displayNone = false;
+      }
+    })
+    if (localStorage.length === 0 || displayNone === true){
+        carritoVacio.innerText = "AUN NO HAY PRODUCTOS EN EL CARRITO!";
+        carritoContenedor.innerHTML = "";
+        tachito.style.display = "none";
+        carritoComprar.style.display = "none";
+        localStorage.clear();
+    } 
+    return;
+  };
 
   window.addEventListener('load', () => {
     if (localStorage.length === 0){
@@ -280,6 +476,7 @@ function guardarLS(infoProducto) {
         localStorage.clear();
     } else {
       const carritoLS = JSON.parse(localStorage.getItem('productoData')) || [];
+      console.log(carritoLS);
       actualizarInterfazUsuario(carritoLS);
     }
   });
@@ -293,19 +490,83 @@ function guardarLS(infoProducto) {
     carritoComprar.style.display = "flex";
     tachito.style.display = "flex";
     carritoLS.forEach(productoElegido => {
+      if (productoElegido.cantidad < 0) {
+        return
+      };
       const contenedorCardsCarrito = document.createElement("div");
       contenedorCardsCarrito.id = "productos-card-content";
       contenedorCardsCarrito.innerHTML = `        
-      <div id="producto-agregado">
+      <div id="producto-agregado" class="hey">
       <div id="contenedor-carrito-data">
           <p id="producto-carrito-nombre">${productoElegido.nombreCelular}</p>
           <p id="producto-carrito-precio">${productoElegido.precioCelular}</p>
       </div>
       <img src="${productoElegido.imagenCelular}" id="producto-carrito-img">
       <p id="producto-carrito-cantidad">Cantidad : ${productoElegido.cantidad}</p>
+      <div id="contenedor-suma-resta">
+      <i class="fa-solid fa-minus" class="fa-minus" id="${productoElegido.nombreCelular}resta"></i>
+      <i class="fa-solid fa-plus" class="fa-plus" id="${productoElegido.nombreCelular}"></i>
+      </div>
   </div>
       `
       carritoContenedor.appendChild(contenedorCardsCarrito);
+      // mas y menos productos 
+      idMas = productoElegido.nombreCelular;
+      idMenos = productoElegido.nombreCelular + "resta";
+      const masCantidad = document.getElementById(idMas);
+      const menosCantidad = document.getElementById(idMenos);
+      masCantidad.addEventListener("click", function (e) {
+        const masCant = e.target.parentElement.parentElement.children[0].children[0].textContent;
+        console.log(masCant);
+        sumarCant(masCant);
+        function sumarCant (nombreCelu) {
+          const existeCelu = carritoLS.find((item) => item.nombreCelular === nombreCelu); 
+          if (nombreCelu) {
+          agregarCant(existeCelu);
+          }
+          function agregarCant (existeCelu) {
+            console.log(existeCelu.cantidad);
+            if (carritoLS.map((cel) => 
+            cel.nombreCelular === existeCelu.nombreCelular)){
+              existeCelu.cantidad += 1;
+              console.log("yey")
+              updateCart(existeCelu);
+              guardarLS(existeCelu);
+            }
+            console.log(existeCelu.nombreCelular, existeCelu.cantidad);
+          };
+        
+        };
+      })
+      menosCantidad.addEventListener("click", function (e) {
+        const menosCantPadre = e.target.parentElement.parentElement;
+        // console.log(menosCantPadre);
+        const menosCant = e.target.parentElement.parentElement.children[0].children[0].textContent;
+        console.log(menosCant);
+        restarUnidades(menosCant, menosCantPadre);
+        function restarUnidades (nombreCelu, menosCantPadre) {
+          console.log(nombreCelu);
+          const existeCelu = carritoLS.find((item) => item.nombreCelular === nombreCelu); 
+          restarUnidad(existeCelu, menosCantPadre);
+        }
+        function restarUnidad (celu, menosCantPadre) {
+          console.log(celu.cantidad);
+          if (carritoLS.map((cel) => 
+          cel.nombreCelular === celu.nombreCelular)){
+            celu.cantidad -= 1;
+            if (celu.cantidad === 0) {
+              const productoBuscado = celu.nombreCelular;
+              menosCantPadre.style.display = "none";
+              carroVacio();
+            } else {
+              updateCart(celu);
+              guardarLS(celu);
+            }
+          }
+          console.log(celu.nombreCelular, celu.cantidad);
+        }
+      })
+      carroVacio();
        // funcion para borrar los productos del carrito
       tachito.addEventListener("click", function (){
                 carritoVacio.innerText = "AUN NO HAY PRODUCTOS EN EL CARRITO!";
@@ -315,28 +576,42 @@ function guardarLS(infoProducto) {
                 window.location.reload();
                 localStorage.clear();
       })
-    } )
+      
+  })
     console.log(carritoLS);
-  }  
+  } 
   
 
 let allProducts = [];
 
+
 function agregarProductos() {
   document.querySelectorAll(".card-button").forEach((marcado) => {
+    var contadorClicks = 0;
     marcado.addEventListener("click", function(){
+      contadorClicks++;
         carritoVacio.innerText = "MIS PRODUCTOS";
         carritoVacio.classList.add("margin-topp");
         carritoVacio.id = "carrito-pedido";
         carrito.style.display = "flex";
         carritoComprar.style.display = "flex";
         tachito.style.display = "flex";
+        productoAgregado.style.display = "flex";
+        productoAgregado.classList.add("mostrar");
+        productoAgregado.classList.remove("ocultar");
+        setTimeout(function () {
+          productoAgregado.classList.add("ocultar");
+          productoAgregado.classList.remove("mostrar");
+        }, 2000);
+        setTimeout(function() {
+          productoAgregado.style.display = "none";
+        }, 2500);
       
       // traemos la data de las cards // 
 
         const productoElegido = marcado.parentElement;
         const infoProducto = {
-          cantidad : 1,
+          cantidad : contadorClicks,
           nombreCelular : productoElegido.querySelector("h3").textContent,
           imagenCelular : productoElegido.querySelector("img").src,
           precioCelular : productoElegido.querySelector("h4").textContent
@@ -344,18 +619,21 @@ function agregarProductos() {
         
         const existeCard = allProducts.some(productoElegido => productoElegido.nombreCelular === infoProducto.nombreCelular);
 
+
         if (existeCard){
           const productos = allProducts.map(productoElegido => {
             if (productoElegido.nombreCelular === infoProducto.nombreCelular){
               productoElegido.cantidad++;
+              guardarLS(infoProducto)
+              updateCart(infoProducto)
               return productoElegido;
             } else {
               return productoElegido; 
             }
           });
-          allProducts = [...productos];
         } else {
           allProducts = [...allProducts, infoProducto];
+          guardarLS(infoProducto)
           updateCart(infoProducto)
         }
 
@@ -373,10 +651,17 @@ function agregarProductos() {
 });
 }
 
-function updateCart (infoProducto) {
-  guardarLS(infoProducto);
-  mostrarHTML();
+function updateCart2 (infoProducto) {
+  htmlMostrar(infoProducto);
+  return;
 };
+
+function updateCart (infoProducto) {
+  mostrarHTML();
+  return;
+};
+
+// sumar y restar productos desde el carrito
 
 // finalizar compra 
 
